@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery.fly</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.fly.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                var elements = [],
+                    divs;
+                for (var i=1; i<=10; i++) {
+                    elements.push(
+                        $("<div/>")
+                            .addClass("div" + i)
+                            .text("element" + i)
+                            .get(0)
+                    );
+                }
+                divs = $(elements);
+                
+                // use jQuery object
+                $.fly(divs)
+                    .addClass("jquery");
+                
+                // use DOMNodes
+                divs.each(function() {
+                    $.fly(this).addClass("node");
+                });
+                
+                // use array of DOMNodes
+                $.fly(elements)
+                    .addClass("arrrray")
+                // chaining works normally
+                    .filter(".div4")
+                        .text("div4").end()
+                    .last()
+                        .text("last");
+                
+                $.fly(elements.slice(1, 2))
+                    .addClass("second");
+                
+                $("body").append(divs);
+            });
+        </script>
+    </head>
+    <body></body>
+</html>
