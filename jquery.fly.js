@@ -1,4 +1,4 @@
-(function($, undef) {
+(function($) {
     
     var fly  = $(),
         push = Array.prototype.push;
@@ -7,7 +7,6 @@
         var len = fly.length,
             i;
         if ($.isArray(elem)) {
-            fly.context = undef;
             fly.length  = 0;
             i           = push.apply(fly, elem);
         } else {
@@ -17,7 +16,7 @@
             if (typeof elem == "string") {
                 throw "use jQuery()";
             }
-            fly[0]     = fly.context = elem;
+            fly[0]     = elem;
             fly.length = i = 1;
         }
         // remove orphaned references
