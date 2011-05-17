@@ -36,7 +36,8 @@
                     .last()
                         .text("last");
                 
-                $.fly(elements.slice(1, 2))
+                $.fly(elements)
+                    .eq(1)
                     .addClass("second");
                 
                 $("body").append(divs);

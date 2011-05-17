@@ -1,4 +1,4 @@
 Flyweight pattern applied to jQuery object.
 
 Some benchmarks here:
-http://jsperf.com/jquery-fly/2
+http://jsperf.com/jquery-fly/3

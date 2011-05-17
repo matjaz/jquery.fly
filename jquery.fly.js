@@ -1,14 +1,15 @@
 (function($, undef) {
     
-    var fly  = $([]),
-        ctx  = fly.context,
+    var fly  = $(),
         push = Array.prototype.push;
     
     $.fly = function(elem) {
-        elem || (elem = ctx);
-        if (elem.nodeType || elem.length === undef) {
-            fly[0]     = fly.context = elem;
-            fly.length = 1;
+        var len = fly.length,
+            i;
+        if ($.isArray(elem)) {
+            fly.context = undef;
+            fly.length  = 0;
+            i           = push.apply(fly, elem);
         } else {
             if (elem instanceof $) {
                 return elem;
@@ -16,10 +17,14 @@
             if (typeof elem == "string") {
                 throw "use jQuery()";
             }
-            fly.context = ctx;
-            fly.length  = 0;
-            push.apply(fly, elem);
+            fly[0]     = fly.context = elem;
+            fly.length = i = 1;
         }
+        // remove orphaned references
+        while (i<len) {
+            delete fly[i++];
+        }
+        
         return fly;
     };
     
