@@ -1,0 +1,10 @@
+{
+  "name": "jquery.fly",
+  "version": "0.0.1",
+  "main": "jquery.fly.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
